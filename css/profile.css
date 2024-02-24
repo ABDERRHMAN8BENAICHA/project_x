@@ -1,0 +1,141 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+.comtainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 370px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    padding: 25px;
+    background-image: linear-gradient(to bottom , #4070f4 38%,transparent 38%);
+}
+.comtainer .photo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color:#4070f4;
+    padding: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+}
+
+.comtainer .photo img {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow: hidden;
+}
+
+
+
+
+.comtainer .text-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comtainer .text-data .name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.comtainer .text-data .jop {
+    font-size: 16px;
+    margin: 3px;
+}
+
+.comtainer .coshile {
+    display: flex;
+    font-display: row;
+    gap:10px;
+}
+
+.comtainer .coshile a {
+    font-size: 20px;
+}
+
+.comtainer .coshile a i {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.btns a.btn  {
+    padding: 5px 20px ;
+    background-color: #4070f4;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: 400;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+
+.comtainer .icons {
+    text-align: center;
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+.comtainer .icons a {
+    padding:5px;
+    text-decoration:none;
+    color: black;
+    font-size: 16px;
+    position: relative;
+}
+
+.comtainer .icons a i {
+    margin-right: 10px;
+}
+
+
+
+.comtainer .icons a:nth-child(2)::after,
+.comtainer .icons a:nth-child(2):before{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 20px;
+    background-color: #ddd;
+    top:5px;
+}
+.comtainer .icons a:nth-child(2):before {
+    left: -7px;
+
+}
+.comtainer .icons a:nth-child(2)::after {
+    right: -7px
+}
+
+
+
+

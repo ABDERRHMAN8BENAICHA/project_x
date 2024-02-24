@@ -1,0 +1,300 @@
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+:root{
+    --mainColor:#111f2f;
+    --hoverColor:#57606d;
+    --skandryColor:#0074fe;
+    --green:#036d05;
+    --yellow:#f9cf03;
+    --red:#ff0000;
+}
+
+body{
+    background-color:#000;
+    color: white;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+}
+.container .left{
+    background-color: var(--mainColor);
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.container .left .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.container .left .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-left: -20px;
+}
+.container .left .logo h2 {
+    font-size: 20px;
+}
+.container .left .list {
+    list-style: none ;
+}
+.container .left .list li {
+    margin: 5px 0;
+    padding: 10px; 
+    border-radius: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+.container .left .list li.logout{
+    margin-top:140px;
+    background-color: #6f0000;
+}
+
+.container .left .list li i {
+    font-size: 18px;
+    margin-right: 20px;
+    color: white;
+}
+.container .left .list li span,
+.container .left .logo h2 {
+    display: none;
+}
+
+.container .left .list li:hover{
+    background-color: var(--hoverColor);
+}
+
+
+.container .left:hover .list li span 
+,.container .left:hover .logo h2 ,
+.container .left:hover .logo img{
+    display: inline-block;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+/* start right */
+
+.container .right{
+    width: 95%;
+    padding: 10px;
+}
+.container .right .head-1{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--skandryColor);
+    border-radius: 5px;
+    padding: 10px 20px ;
+    margin:10px 0;
+}
+.container .right .head-1 i{
+    cursor: pointer;
+}
+
+.right .boxs {
+    /* margin-top: 10px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 10px;
+}
+.right .boxs .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--mainColor);
+    transition: 0.5s;
+    height: 100px;
+    padding: 20px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+
+.right .boxs .box:hover,.activ{
+    background-color: var(--hoverColor);
+    text-decoration: none;
+}
+.right .boxs .box i {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+.right .boxs .box p {
+    position: relative;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+
+}
+.right .boxs .box p::before{
+    content: attr(name);
+    position: absolute;
+    left: 5px;
+    top:-20px;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.right table{
+    width: 100%;
+    text-align: center;
+    border-spacing:7px;
+}
+.right table thead{
+    background-color: var(--skandryColor);
+}
+.right table thead th{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.right table thead th:nth-of-type(1){
+    width: 20%;
+}
+
+.right table tbody td{
+    background-color: var(--mainColor);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+/*
+.right table tbody td:nth-of-type(2) span ,
+.right table tbody td:nth-of-type(3) span
+{
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.right table tbody td:nth-of-type(2) span{
+    background-color: var(--green);
+}
+.right table tbody td:nth-of-type(3) span{
+    background-color: var(--yellow);
+}
+.right table tbody td:hover{
+    background-color: var(--hoverColor);
+} */
+
+
+#img-hover img{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    z-index: 90;
+    transition: 0.3s;
+    display: none;
+}
+
+.add-user form{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-user  form div  {
+    width: 100%;
+}
+.add-user  form input {
+    width: 100%;
+    padding: 10px;
+    background: var(--mainColor);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+.add-user form button {
+    width: 80%;
+    background: var(--skandryColor);
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.add-user form button:hover {
+    transform: scale(1.05); /* Increased scale for hover effect */
+}
+
+
+.add-admin{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: var(--skandryColor);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: transform 0.3s ease;
+}
+
+.add-admin:hover {
+    transform: scale(1.05); /* Increased scale for hover effect */
+}
+
+.delete{
+    background: var(--red);
+    padding: 2px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.update {
+    background: var(--green);
+    padding: 2px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
