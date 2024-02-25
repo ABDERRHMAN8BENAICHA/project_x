@@ -527,7 +527,7 @@ section p {
 
 .container .products .box {
     border: 1px solid #e5e4e4;
-    height: auto;
+    height: 400px;
     width: 270px;
     padding: 10px;
     border-radius: 20px;
@@ -548,6 +548,7 @@ section p {
 
 
 .container .products .box img {
+    height:  270px;
     width: 100%;
     border-radius: 20px;
 }
