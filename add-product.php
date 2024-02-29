@@ -23,7 +23,7 @@
                     <div><input required placeholder="type" type="text" name="type"></div>
                     <div><input required placeholder="price" type="number" name="price"></div>
                     <div><input required placeholder="your photo" type="file" name="photo"></div>
-                    <button type="submit" name="add-admin"> Add product</button>
+                    <button type="submit" name="add-product"> Add product</button>
                 </form>
             </div>
         </div>
@@ -35,7 +35,7 @@
 
 <?php
 
-if (isset($_POST['add-admin'])) {
+if (isset($_POST['add-product'])) {
     $name = $_POST["name"];
     $description = $_POST["description"];
     $evaluation = $_POST["evaluation"];
@@ -47,7 +47,7 @@ if (isset($_POST['add-admin'])) {
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"],"./uploads/product/".$file_name);
     }
-        $insert = "INSERT INTO product (name, description, evaluation , type, price,photo) values('$name','$description',$evaluation,'$type',$price,'$file_name') ";    
+        $insert = "INSERT INTO product (name, description, evaluation , type, price,photo , status) values('$name','$description',$evaluation,'$type',$price,'$file_name' , 'hanging') ";    
         if ($conn->query($insert) === true) {
             echo "<script>location.href='admin.php';</script>";
         }

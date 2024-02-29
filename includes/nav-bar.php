@@ -43,6 +43,11 @@
                         <li><a href="admin.php">Admin Panel</a></li>
                         <?php
                     }
+                    if ($_SESSION["type"] == "owner") {
+                        ?>
+                        <li><a href="./owner/index.php">Owner Panel</a></li>
+                        <?php
+                    }
         }
         ?>
             </ul>

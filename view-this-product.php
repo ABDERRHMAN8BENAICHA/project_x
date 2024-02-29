@@ -29,14 +29,21 @@ if (isset($_GET["id"])) {
             </div>
             <div class="right">
                 <h1>
-                    <?php echo $product['name']; ?>
+                    <?php echo $product['namePro']; ?>
                 </h1>
                 <span class="price">$
                     <?php echo $product['price']; ?>
                 </span>
                 <div>
                     <input type="number" value="1" min="1">
-                    <a href="https://www.poste.dz/">
+                    <a href="<?php
+                    if (isset($_SESSION['email'])) {
+                        echo "https://www.poste.dz/";
+                    } else {
+                        echo "login.php";
+                    }
+
+                    ?>">
                         <button>Proceed to checkout</button>
                     </a>
                 </div>

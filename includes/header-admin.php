@@ -34,6 +34,14 @@ if ($result->num_rows > 0) {
     $_SESSION["rowCount-product"] = $row['row_count'];
 }
 
+$sql = "SELECT COUNT(*) AS row_count FROM owner";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $_SESSION["rowCount-owner"] = $row['row_count'];
+}
+
 $sql = "SELECT SUM(price) AS total_price FROM product";
 $result = $conn->query($sql);
 

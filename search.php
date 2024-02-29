@@ -26,7 +26,7 @@
             include "./includes/conn.php";
             if (isset($_POST["search"])) {
                 $search = $_POST["search"];
-                $sql = "SELECT * FROM product WHERE name LIKE '%$search%' OR description LIKE '%$search%';";
+                $sql = "SELECT * FROM product WHERE (namePro LIKE '%$search%' OR description LIKE '%$search%') AND status = 'acceptable';";
                 $result = $conn->query($sql);
                 if ($result) {
                     if ($result->num_rows > 0) {
@@ -39,7 +39,7 @@
                                     <?php echo $row["type"] ?>
                                 </span>
                                 <h4>
-                                    <?php echo $row["name"] ?>
+                                    <?php echo $row["namePro"] ?>
                                 </h4>
                                 <ul class="stars" style="display: flex; list-style: none;">
                                     <?php

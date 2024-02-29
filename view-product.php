@@ -24,6 +24,7 @@
                     <th>evaluation</th>
                     <th>type</th>
                     <th>price</th>
+                    <th>status</th>
                     <th>delete</th>
                     <th>update</th>
                 </tr>
@@ -35,11 +36,12 @@
                 while ($arr = mysqli_fetch_array($result)) {
                     echo "<tr>
                                 <td><span>" . $arr['id_product'] . "</span></td>
-                                <td><span>" . $arr['name'] . "</span></td>
+                                <td><span>" . $arr['namePro'] . "</span></td>
                                 <td><span>" . mb_strimwidth($arr['description'],0,20,"...") . "</span></td>
                                 <td><span>" . $arr['evaluation'] . "</span> </td>
                                 <td><span>" . $arr['type'] . "</span> </td>
                                 <td><span>" . $arr['price'] . "</span> </td>
+                                <td><span>" . $arr['status'] . "</span> </td>
                                 <td><a href='delete-product.php?id= " . $arr['id_product'] . "' class='delete'>delete</a> </td>
                                 <td><a href='update-product.php?id= " . $arr['id_product'] . "' class='update'>update</a> </td>
                             </tr>";

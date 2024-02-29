@@ -138,6 +138,7 @@ nav ul li:hover i {
     border-radius: 10px;
     top: 65%;
     right: 0%;
+
 }
 
 #user-menu li a {
@@ -145,6 +146,9 @@ nav ul li:hover i {
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
+    position: relative;
+    z-index:100;
+
 }
 
 #user-menu li a:hover {

@@ -25,6 +25,16 @@ if (isset($_SESSION['email'])) {
             // echo $_SESSION["user"]["photo"];
         }
     }
+    if ($_SESSION["type"] == "owner"){
+        $sql = "SELECT * FROM owner WHERE id_owner = $id";
+        $result = $conn->query($sql);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $_SESSION["user"] = $row;
+            // var_dump($_SESSION["user"]);
+            // echo $_SESSION["user"]["photo"];
+        }
+    }
 }
 
 
@@ -117,7 +127,7 @@ if (isset($_SESSION['email'])) {
             </div> -->
             <?php
             include "./includes/conn.php";
-            $sql = "SELECT * FROM `product`";
+            $sql = "SELECT * FROM `product` WHERE status = 'acceptable'";
             $result = $conn->query($sql);
             if ($result) {
                 if ($result->num_rows > 0) {
@@ -130,7 +140,7 @@ if (isset($_SESSION['email'])) {
                                 <?php echo $row["type"] ?>
                             </span>
                             <h4>
-                                <?php echo $row["name"] ?>
+                                <?php echo $row["namePro"] ?>
                             </h4>
                             <ul class="stars" style="display: flex; list-style: none;">
                                 <?php
