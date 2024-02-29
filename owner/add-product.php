@@ -45,8 +45,9 @@ if (isset($_POST['add-product'])) {
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"],"../uploads/product/".$file_name);
     }
-        $insert = "INSERT INTO product (namePro, description , evaluation , type , price , photo , owner_make , status) values('$name','$description',$evaluation,'$type',$price,'$file_name',$id,'hanging')";    
-        if ($conn->query($insert) === true) {
+        // $insert = "INSERT INTO product (namePro, description , evaluation , type , price , photo , owner_make , status) VALUES('$name','$description',$evaluation,'$type',$price,'$file_name',$id,'hanging')";   
+        $insert = "INSERT INTO product (namePro, description, evaluation, type, price, photo, owner_make, status) VALUES ('$name', '$description', $evaluation, '$type', $price, '$file_name', $id, 'hanging')";
+        if ($conn->query($insert) == true) {
             echo "<script>location.href='index.php';</script>";
         }
 }

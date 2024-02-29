@@ -71,7 +71,7 @@
                     </select>
                 </div>
                 <div><input value="<?php echo $price ?>" required placeholder="price" type="number" name="price"></div>
-                <div><input  required placeholder="your photo" type="file" value="<?php echo $photo ?>" name="photo" ></div>
+                <div><input placeholder="your photo" type="file" name="photo" ></div>
                 <button type="submit" name="update-product"> Update Product</button>
             </form>
         </div>
@@ -93,14 +93,18 @@ if (isset($_POST["update-product"])) {
     $photo = $_POST["photo"];
     $status = $_POST["status"];
     $file_name = "";
-    if (isset($_FILES["photo"])) {
+    if (empty($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"], "./uploads/product/" . $file_name);
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name', status = '$status'  WHERE id_product=$id";
+        $res = $conn->query($sql);
+        echo "<script>location.href='admin.php';</script>";
+    }else {
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , status = '$status'  WHERE id_product=$id";
+        $res = $conn->query($sql);
+        echo "<script>location.href='admin.php';</script>";
     }
-    $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name', status = '$status'  WHERE id_product=$id";
-    $res = $conn->query($sql);
-    echo "<script>location.href='admin.php';</script>";
 
 }
 

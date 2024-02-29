@@ -32,7 +32,7 @@
                 <div><input value="<?php echo $type ?>" required placeholder="type" type="text" name="type">
                 </div>
                 <div><input value="<?php echo $price ?>" required placeholder="price" type="number" name="price"></div>
-                <div><input  placeholder="your photo" type="file" name="photo" value="<?php echo $photo ?>"></div>
+                <div><input  placeholder="your photo" type="file" name="photo"></div>
                 <button type="submit" name="update-product"> Update Product</button>
             </form>
         </div>
@@ -53,14 +53,18 @@ if (isset($_POST["update-product"])) {
     $price = $_POST["price"];
     $photo = $_POST["photo"];
     $file_name = "";
-    if (isset($_FILES["photo"])) {
+    if (empty($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/product/" . $file_name);
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name' WHERE id_product=$id";
+        $res = $conn->query($sql);
+        echo "<script>location.href='index.php';</script>";
+    } else {
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , WHERE id_product=$id";
+        $res = $conn->query($sql);
+        echo "<script>location.href='index.php';</script>";
     }
-    $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name' WHERE id_product=$id";
-    $res = $conn->query($sql);
-    echo "<script>location.href='index.php';</script>";
 }
 
 ?>

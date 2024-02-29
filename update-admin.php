@@ -62,7 +62,7 @@
                 <div><input value="<?php echo $address ?>" required placeholder="address" type="text" name="address">
                 </div>
                 <div><input value="<?php echo $phone ?>" required placeholder="phone" type="number" name="phone"></div>
-                <div><input required placeholder="your photo" type="file" name="photo"></div>
+                <div><input  placeholder="your photo" type="file" name="photo"></div>
                 <button type="submit" name="update-admin"> Update Admin</button>
             </form>
         </div>
@@ -82,12 +82,15 @@ if (isset($_POST["update-admin"])) {
     $address = $_POST["address"];
     $password = $_POST["password"];
     $file_name = "";
-    if(isset($_FILES["photo"])) {
+    if(empty($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"],"./uploads/user-img/".$file_name);
+        $sql = "UPDATE admin SET name='$name', password='$password', address='$address', phone='$phone' , photo='$file_name' WHERE email='$email'";
+        $res = $conn->query($sql);
+        echo "<script>location.href='admin.php';</script>";
     }
-    $sql = "UPDATE admin SET name='$name', password='$password', address='$address', phone='$phone' , photo='$file_name' WHERE email='$email'";
+    $sql = "UPDATE admin SET name='$name', password='$password', address='$address', phone='$phone' WHERE email='$email'";
     $res = $conn->query($sql);
     echo "<script>location.href='admin.php';</script>";
 
