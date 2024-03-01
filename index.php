@@ -135,7 +135,7 @@ if (isset($_SESSION['email'])) {
                         ?>
                         <div class="box">
                             <a href="view-this-product.php?id=<?php echo $row["id_product"] ?>"><img
-                                    src="./uploads/product/<?php echo $row["photo"] ?>" alt=""></a>
+                                    src="./uploads/product/<?php echo $row["photo"] ?>" alt="<?php echo $row["namePro"] ?>"></a>
                             <span>
                                 <?php echo $row["type"] ?>
                             </span>

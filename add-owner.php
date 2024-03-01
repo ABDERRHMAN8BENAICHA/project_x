@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +11,33 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./css/admin.css">
-    <title> Add Admin </title>
-</head>
-<style>
-    .btn-cancel {
+    <style>
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+            top: 0px;
+            z-index: 80;
+            border-radius: 10px;
+            width: 50%;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+        .btn-cancel {
     display: inline-block;
     border: 1px solid white ;
     width: 80%;
@@ -25,7 +50,10 @@
 .btn-cancel:hover {
     transform: scale(1.05);
 }
-</style>
+    </style>
+    <title> Add Owner </title>
+</head>
+
 <body>
     <div class="container">
     <?php include "./includes/header-admin.php"?>
@@ -37,9 +65,8 @@
                     <div><input required placeholder="address" type="text" name="address"></div>
                     <div><input required placeholder="phone" type="number" name="phone"></div>
                     <div><input required placeholder="your photo" type="file" name="photo"></div>
-                    <button type="submit" name="add-admin"> Add Admin</button>
+                    <button type="submit" name="add-owner"> Add Owner</button>
                     <a  href="admin.php" class="btn-cancel" > Cancel</a>
-
                 </form>
             </div>
         </div>
@@ -51,7 +78,7 @@
 
 <?php
 
-if (isset($_POST['add-admin'])) {
+if (isset($_POST['add-owner'])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -63,7 +90,7 @@ if (isset($_POST['add-admin'])) {
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"],"./uploads/user-img/".$file_name);
     }
-    $chekEmail = "SELECT * FROM admin WHERE email = '$email'";
+    $chekEmail = "SELECT * FROM owner WHERE email = '$email'";
     $res = $conn->query($chekEmail);
     if (mysqli_num_rows($res) > 0) {
         ?>
@@ -73,7 +100,8 @@ if (isset($_POST['add-admin'])) {
         </div>
         <?php
     } else{
-        $insert = "INSERT INTO admin (name, email, password , address, phone,photo) values('$name','$email','$password','$address','$phone','$file_name') ";    
+        $insert = "INSERT INTO owner (name, email, password , address, phone) values('$name','$email','$password','$address','$phone') ";
+    
         if ($conn->query($insert) === true) {
             echo "<script>location.href='admin.php';</script>";
         }

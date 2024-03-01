@@ -150,7 +150,7 @@ if ($result->num_rows > 0) {
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM product JOIN owner ON product.owner_make =owner.id_owner  WHERE owner.id_owner = $id  ";
+                $sql = "SELECT * FROM product JOIN owner ON product.owner_make =owner.id_owner  WHERE owner.id_owner = $id";
                 $result = $conn->query($sql);
                 while ($arr = mysqli_fetch_array($result)) {
                     echo "<tr>
@@ -161,8 +161,8 @@ if ($result->num_rows > 0) {
                                     <td><span>" . $arr['type'] . "</span> </td>
                                     <td><span>" . $arr['price'] . "</span> </td>
                                     <td><span>" . $arr['status'] . "</span> </td>
-                                    <td><a href='delete-product.php?id= " . $arr['id_product'] . "' class='delete'>delete</a> </td>
-                                    <td><a href='update-product.php?id= " . $arr['id_product'] . "' class='update'>update</a> </td>
+                                    <td><a href='delete-product.php?id=" . $arr['id_product'] . "' class='delete'>delete</a> </td>
+                                    <td><a href='update-product.php?id=" . $arr['id_product'] . "' class='update'>update</a> </td>
                                 </tr>";
                 }
                 ?>

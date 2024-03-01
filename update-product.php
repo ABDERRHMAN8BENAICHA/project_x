@@ -34,6 +34,20 @@
         .closebtn:hover {
             color: black;
         }
+        
+.btn-cancel {
+    display: inline-block;
+    border: 1px solid white ;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+.btn-cancel:hover {
+    transform: scale(1.05);
+}
     </style>
     <title>Update Product</title>
 </head>
@@ -73,6 +87,7 @@
                 <div><input value="<?php echo $price ?>" required placeholder="price" type="number" name="price"></div>
                 <div><input placeholder="your photo" type="file" name="photo" ></div>
                 <button type="submit" name="update-product"> Update Product</button>
+                <a  href="admin.php" class="btn-cancel" > Cancel</a>
             </form>
         </div>
     </div>
@@ -90,18 +105,17 @@ if (isset($_POST["update-product"])) {
     $evaluation = $_POST["evaluation"];
     $type = $_POST["type"];
     $price = $_POST["price"];
-    $photo = $_POST["photo"];
     $status = $_POST["status"];
     $file_name = "";
     if (empty($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"], "./uploads/product/" . $file_name);
-        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name', status = '$status'  WHERE id_product=$id";
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name', status = '$status'  WHERE id_product= $id";
         $res = $conn->query($sql);
         echo "<script>location.href='admin.php';</script>";
     }else {
-        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , status = '$status'  WHERE id_product=$id";
+        $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , status = '$status'  WHERE id_product= $id";
         $res = $conn->query($sql);
         echo "<script>location.href='admin.php';</script>";
     }

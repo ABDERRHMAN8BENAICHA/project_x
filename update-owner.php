@@ -57,7 +57,7 @@
         <div class="add-user">
             <?php
             $id = $_GET['id'];
-            $sql = "SELECT * FROM admin WHERE id_admin = $id";
+            $sql = "SELECT * FROM owner WHERE id_owner = $id";
             $res = $conn->query($sql);
             while ($data = mysqli_fetch_assoc($res)) {
                 $name = $data["name"];
@@ -76,7 +76,7 @@
                 </div>
                 <div><input value="<?php echo $phone ?>" required placeholder="phone" type="number" name="phone"></div>
                 <div><input  placeholder="your photo" type="file" name="photo"></div>
-                <button type="submit" name="update-admin"> Update Admin</button>
+                <button type="submit" name="update-owner"> Update Owner</button>
                 <a  href="admin.php" class="btn-cancel" > Cancel</a>
 
             </form>
@@ -90,7 +90,7 @@
 
 <?php
 
-if (isset($_POST["update-admin"])) {
+if (isset($_POST["update-owner"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
@@ -101,11 +101,11 @@ if (isset($_POST["update-admin"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
         move_uploaded_file($_FILES["photo"]["tmp_name"],"./uploads/user-img/".$file_name);
-        $sql = "UPDATE admin SET name='$name', password='$password', address='$address', phone='$phone' , photo='$file_name' WHERE email='$email'";
+        $sql = "UPDATE owner SET name='$name', password='$password', address='$address', phone='$phone' , photo='$file_name' WHERE email='$email'";
         $res = $conn->query($sql);
         echo "<script>location.href='admin.php';</script>";
     }
-    $sql = "UPDATE admin SET name='$name', password='$password', address='$address', phone='$phone' WHERE email='$email'";
+    $sql = "UPDATE owner SET name='$name', password='$password', address='$address', phone='$phone' WHERE email='$email'";
     $res = $conn->query($sql);
     echo "<script>location.href='admin.php';</script>";
 

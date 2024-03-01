@@ -34,6 +34,10 @@
         .closebtn:hover {
             color: black;
         }
+
+        label {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -75,12 +79,12 @@
                 <input type="password" required placeholder="Password" name="password">
                 <a href="#">Forget Your Password?</a>
                 <div style="display: flex;gap: 10px; justify-content: center; aling-items:center;">
-                    <label for="owner">Owner</label>
-                    <input type="radio" required id="owner" name="radio" value="owner">
-                    <label for="client">Client</label>
-                    <input type="radio" required id="client" name="radio" value="client">
-                    <label for="admin">Admin</label>
-                    <input type="radio"  required id="admin" name="radio" value="admin">
+                    <label for="owner1">Owner</label>
+                    <input type="radio" required id="owner1" name="radio" value="owner">
+                    <label for="client1">Client</label>
+                    <input type="radio" required id="client1" name="radio" value="client">
+                    <label for="admin1">Admin</label>
+                    <input type="radio" required id="admin1" name="radio" value="admin">
                 </div>
                 <button name="signin" type="submit">Sign In</button>
             </form>

@@ -7,7 +7,6 @@ if (!($_SESSION["type"] == "admin")) {
 }
 ?>
 
-
 <?php
 
 $sql = "SELECT COUNT(*) AS row_count FROM client";
@@ -42,13 +41,13 @@ if ($result->num_rows > 0) {
     $_SESSION["rowCount-owner"] = $row['row_count'];
 }
 
-$sql = "SELECT SUM(price) AS total_price FROM product";
-$result = $conn->query($sql);
+// $sql = "SELECT SUM(price) AS total_price FROM product";
+// $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $_SESSION["total_price"] = $row['total_price'];
-}
+// if ($result->num_rows > 0) {
+//     $row = $result->fetch_assoc();
+//     $_SESSION["total_price"] = $row['total_price'];
+// }
 ?>
 
 <style>
@@ -152,15 +151,15 @@ if ($result->num_rows > 0) {
                     ?></p>
             </div>
         </a>
-        <a href="">
+        <a href="view-owner.php">
             <div class="box">
                 <i class="fa-solid fa-dollar-sign"></i>
-                <p name="revenue">
+                <p name="owner">
                 <?php
-                    if (isset($_SESSION["total_price"])) {
-                        echo $_SESSION["total_price"] . "$";
+                    if (isset($_SESSION["rowCount-owner"])) {
+                        echo $_SESSION["rowCount-owner"];
                     } else {
-                        echo "0$";
+                        echo "0";
                     }
                     ?>
                 </p>

@@ -37,6 +37,19 @@
         .closebtn:hover {
             color: black;
         }
+        .btn-cancel {
+    display: inline-block;
+    border: 1px solid white ;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+.btn-cancel:hover {
+    transform: scale(1.05);
+}
     </style>
     <title> Add Client </title>
 </head>
@@ -53,6 +66,7 @@
                     <div><input required placeholder="phone" type="number" name="phone"></div>
                     <div><input required placeholder="your photo" type="file" name="photo"></div>
                     <button type="submit" name="add-client"> Add Client</button>
+                    <a  href="admin.php" class="btn-cancel" > Cancel</a>
                 </form>
             </div>
         </div>
