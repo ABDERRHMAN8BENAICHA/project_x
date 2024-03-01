@@ -1,6 +1,6 @@
 <?php
-include "../includes/chek.php";
-include "../includes/conn.php";
+include "./includes/chek.php";
+include "./includes/conn.php";
 if (!($_SESSION["type"] == "owner")) {
     echo "<script>location.href='./index.php';</script>";
     exit();
@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
     <title>dachbord</title>
 </head>
 <style>
@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
         <div class="left">
             <div class="logo">
                 <?php
-                echo "<img src='../uploads/user-img/" . $_SESSION["user"]["photo"] . "' alt=''>";
+                echo "<img src='./uploads/user-img/" . $_SESSION["user"]["photo"] . "' alt=''>";
                 ?>
                 <h2>
                     <?php echo $_SESSION["name"] ?>
@@ -83,10 +83,10 @@ if ($result->num_rows > 0) {
             </div>
 
             <ul class="list">
-                <a href="../index.php">
+                <a href="./index.php">
                     <li><i class="fa-solid fa-house"></i><span>Home</span></li>
                 </a>
-                <a href="view-product.php">
+                <a href="view-product-owner.php">
                     <li><i class="fa-solid fa-table"></i><span>products</span></li>
                 </a>
                 <li><i class="fa-solid fa-chart-pie"></i><span>charts</span></li>
@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
                 <i class="fa-solid fa-notes-medical"></i>
             </div>
             <div class="boxs">
-                <a href="view-product.php">
+                <a href="view-product-owner.php">
                     <div class="box">
                         <i class="fa-solid fa-table"></i>
                         <p name="products">
@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
                     </div>
                 </a>
             </div>
-            <a href="add-product.php" class="add-admin">add product</a>
+            <a href="add-product-owner.php" class="add-admin">add product</a>
             <table>
             <thead>
                 <tr>
@@ -161,8 +161,8 @@ if ($result->num_rows > 0) {
                                     <td><span>" . $arr['type'] . "</span> </td>
                                     <td><span>" . $arr['price'] . "</span> </td>
                                     <td><span>" . $arr['status'] . "</span> </td>
-                                    <td><a href='delete-product.php?id=" . $arr['id_product'] . "' class='delete'>delete</a> </td>
-                                    <td><a href='update-product.php?id=" . $arr['id_product'] . "' class='update'>update</a> </td>
+                                    <td><a href='delete-product-owner.php?id=" . $arr['id_product'] . "' class='delete'>delete</a> </td>
+                                    <td><a href='update-product-owner.php?id=" . $arr['id_product'] . "' class='update'>update</a> </td>
                                 </tr>";
                 }
                 ?>

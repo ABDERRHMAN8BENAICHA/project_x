@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
     <title>Document</title>
 </head>
 <style>
@@ -25,7 +25,7 @@
     <div class="container">
     <div class="add-user">
             <?php
-            include "../includes/conn.php" ;
+            include "./includes/conn.php" ;
             $id = $_GET['id'];
             $sql = "SELECT * FROM product WHERE id_product = $id";
             $res = $conn->query($sql);
@@ -50,7 +50,7 @@
                 <div><input value="<?php echo $price ?>" required placeholder="price" type="number" name="price"></div>
                 <div><input  placeholder="your photo" type="file" name="photo"></div>
                 <button type="submit" name="update-product"> Update Product</button>
-                <a  href="index.php" class="btn-cancel" > Cancel</a>
+                <a  href="owner.php" class="btn-cancel" > Cancel</a>
             </form>
         </div>
     </div>
@@ -72,14 +72,14 @@ if (isset($_POST["update-product"])) {
     if (empty($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
-        move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/product/" . $file_name);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], "./uploads/product/" . $file_name);
         $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price , photo='$file_name' WHERE id_product = $pro_id";
         $res = $conn->query($sql);
-        echo "<script>location.href='index.php';</script>";
+        echo "<script>location.href='owner.php';</script>";
     } else {
         $sql = "UPDATE product SET namePro='$name', description='$description', evaluation=$evaluation, type='$type', price = $price  WHERE id_product = $pro_id";
         $res = $conn->query($sql);
-        echo "<script>location.href='index.php';</script>";
+        echo "<script>location.href='owner.php';</script>";
     }
 }
 

@@ -1,3 +1,6 @@
+<?php include "./includes/conn.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +11,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
     <title> Add Admin </title>
 </head>
 <body>
@@ -29,9 +32,9 @@
 </html>
 
 <?php
-session_start();
-$id = $_SESSION["id"];
-include "../includes/conn.php";
+
+
+
 
 if (isset($_POST['add-product'])) {
     $name = $_POST["name"];
@@ -43,14 +46,15 @@ if (isset($_POST['add-product'])) {
     if (isset($_FILES["photo"])) {
         $image = $_FILES["photo"]["name"];
         $file_name = uniqid() . $image;
-        move_uploaded_file($_FILES["photo"]["tmp_name"], "../uploads/product/" . $file_name);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], "./uploads/product/" . $file_name);
     }
-    // $insert = "INSERT INTO product (namePro, description , evaluation , type , price , photo , owner_make , status) VALUES('$name','$description',$evaluation,'$type',$price,'$file_name',$id,'hanging')";   
-    // $insert = "INSERT INTO `product` (`namePro`, `description`, `evaluation`, `type`, `price`, `photo`, `owner_make`, `status`) VALUES ('$name', '$description', $evaluation, '$type', $price, '$file_name', $id, 'hanging')";  
-    $insert ="INSERT INTO product(namePro, description , evaluation , type , price , photo , owner_make , status) VALUES('$name',' $description', $evaluation,'$type', $price,' $file_name', $id ,'hanging')";    
+    $owner_make = $_SESSION["id"];
+    $insert = "INSERT INTO product (namePro, description, evaluation , type, price,photo ,owner_make, status) values('$name','$description',$evaluation,'$type',$price,'$file_name',$owner_make , 'hanging') ";
     if ($conn->query($insert) === true) {
-        echo "<script>location.href='index.php';</script>";
+        echo "<script>location.href='owner.php';</script>";
     }
 }
+
+
 
 ?>

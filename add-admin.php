@@ -39,7 +39,6 @@
                     <div><input required placeholder="your photo" type="file" name="photo"></div>
                     <button type="submit" name="add-admin"> Add Admin</button>
                     <a  href="admin.php" class="btn-cancel" > Cancel</a>
-
                 </form>
             </div>
         </div>
