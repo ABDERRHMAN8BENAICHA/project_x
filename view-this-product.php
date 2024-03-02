@@ -34,19 +34,36 @@ if (isset($_GET["id"])) {
                 <span class="price">$
                     <?php echo $product['price']; ?>
                 </span>
-                <div>
-                    <input type="number" value="1" min="1">
-                    <a href="<?php
-                    if (isset($_SESSION['email'])) {
-                        echo "https://www.poste.dz/";
-                    } else {
-                        echo "login.php";
-                    }
-
-                    ?>">
-                        <button>Proceed to checkout</button>
-                    </a>
-                </div>
+                <form action="paying.php" method="POST">
+                    <div class="inp-date-groub" style="display: flex; flex-direction: column;">
+                        <div>
+                            <label style="line-height:50px;font-size: 30px;"  for="start">Date Start</label>
+                            <input style="width: 200px;" type="date" name="date-start" id="start">
+                        </div>
+                        <div>
+                            <label style="line-height:50px;font-size: 30px; " for="end">Date End</label>
+                            <input style="width: 200px; margin-left: 15px;" type="date" name="date-end" id="end">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="number" value="1" min="1" style="margin-top: 20px" name="number-client">
+                        <input readonly type="number" value="<?php echo $product['price']; ?>" min="1"
+                            style="margin-top: 20px;height: 50px; width: 100px; " name="price">
+                        <?php
+                        if (isset($_SESSION["email"])) {
+                            ?>
+                            <button type="submit" name="go-paying" style="margin-top: 20px">Proceed to checkout</button>
+                            <?php
+                        }else {
+                            ?>
+                            <a href="login.php"  style="background: var(--Praymari); margin-top: 20px;padding: 15px; border-radius: 10px; " >
+                            Proceed to checkout
+                            </a>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </form>
                 <h2>Product Details</h2>
                 <p>
                     <?php echo $product['description']; ?>
@@ -88,7 +105,7 @@ if (isset($_GET["id"])) {
                                 <?php echo $row["type"] ?>
                             </span>
                             <h4>
-                                <?php echo $row["name"] ?>
+                                <?php echo $row["namePro"] ?>
                             </h4>
                             <ul class="stars" style="display: flex; list-style: none;">
                                 <?php

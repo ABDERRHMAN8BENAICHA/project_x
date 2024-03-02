@@ -899,3 +899,58 @@ section p {
 
 /* end About */
 
+.peyment .coupon div {
+    margin-top: 20px;
+}
+.peyment .coupon input {
+    width: 300px;
+    padding: 10px 20px;
+    outline: none;
+}
+.peyment .coupon button {
+    width: 80px;
+    height: 40px;
+    padding:5px 10px;
+    background-color: #078277;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.last-step {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.cart-totals {
+    border: 1px solid #56575d8b;
+    flex: 0 1 600px;
+    padding: 20px;
+    text-align: left;
+}
+.cart-totals table tr {
+    margin: 10px;
+}
+
+.Proceed-to-checkout {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #078277;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 40px;
+    cursor: pointer;
+    transition: .4s;
+} 
+.Proceed-to-checkout:hover {
+    background:transparent ;
+    border: 1px solid  #078277;
+    color: #078277;
+    transform: scale(0.95);
+}

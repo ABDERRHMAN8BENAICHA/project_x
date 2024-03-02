@@ -31,7 +31,7 @@ include "includes/conn.php";
                                 <?php echo $row["type"] ?>
                             </span>
                             <h4>
-                                <?php echo $row["name"] ?>
+                                <?php echo $row["namePro"] ?>
                             </h4>
                             <ul class="stars" style="display: flex; list-style: none;">
                                 <?php
