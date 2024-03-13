@@ -16,10 +16,10 @@
     $date_end = strtotime($_POST["date-end"]);
     $number_client = $_POST["number-client"];
     $price = $_POST["price"];
-    $days_diff = floor($number_client * ($price / 30));
+    $days_diff = floor($number_client * $price );
     if($date_start !== false && $date_end !== false){
         $date_diff = $date_end - $date_start;
-        $days_diff = floor(($date_diff / (60 * 60 * 24)) * $number_client * ($price / 30)); // price for one day
+        $days_diff = floor(($date_diff / (60 * 60 * 24)) * $number_client * $price ); // price for one day
     }
     ?>
     <div class="container last-step">

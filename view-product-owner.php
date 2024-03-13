@@ -93,7 +93,7 @@ if ($result->num_rows > 0) {
                 <li><i class="fa-solid fa-pen"></i><span>posts</span></li>
                 <li><i class="fa-solid fa-star"></i><span>favorite</span></li>
                 <li><i class="fa-solid fa-gear"></i><span>settings</span></li>
-                <a href="../logout.php">
+                <a href="./logout.php">
                     <li class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>log out</span></li>
                 </a>
             </ul>
