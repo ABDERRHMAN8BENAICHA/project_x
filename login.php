@@ -209,6 +209,7 @@ if (isset($_POST["signup"])) {
             $_SESSION["photo"] = $row["photo"];
             echo "<script>location.href='index.php';</script>";
             exit();
+            
         }
     }
 }
